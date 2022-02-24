@@ -2,38 +2,46 @@
 @section('content')  
     <div class="row">
 		<div class="col-md-12">
-			<h2>Add Shop</h2>
+			<h2>Add Product</h2>
 		</div>
 	</div><br>
     <div class="row">
 		<div class="col-md-12">
-			<form action="<?php echo url('shop/commit'); ?>" method="post" id="shop_form" enctype="multipart/form-data">
+			<form action="<?php echo url('product/commit'); ?>" method="post" id="product_form" enctype="multipart/form-data">
                 @csrf
-                <input type="hidden" id="shop_id" name="shop_id" value="<?php echo (isset($shop_id) && $shop_id != "" ? $shop_id : '');?>">
+                <input type="hidden" class="product_id" name="product_id" value="<?php echo (isset($product_id) && $product_id != "" ? $product_id : '');?>">
 				<div class="form-group">
 					<label for="exampleInputEmail1">Name</label>
-					<input type="name" class="form-control" name="name" placeholder="Full Name" value="<?php echo (isset($shop->name) ? $shop->name : '');?>">
+					<input type="text" class="form-control name" id="name" name="name" placeholder="Name" value="">
 				</div>
 				<div class="form-group">
-					<label for="exampleInputPassword1">Email</label>
-					<input type="email" name="email"  class="form-control email" placeholder="Email" value="<?php echo (isset($shop->email) ? $shop->email : '');?>">
-					<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+					<label>Shop</label>
+					<select name="shop_id" class="form-control shop_id">
+						<option value="">-select shop-</option>
+						<?php foreach($shops as $shop) { ?>
+							<option value="{{$shop->id}}">{{$shop->name}}</option>
+						<?php } ?>
+					</select>
 				</div>
                 <div class="form-group">
-					<label for="exampleInputEmail1">Address</label>
-					<textarea class="form-control" name="address"><?php echo (isset($shop->address) ? $shop->address : '');?></textarea>
+					<label for="exampleInputEmail1">Stock</label>
+					<input type="text" class="form-control" name="stock" value="">
+				</div>
+                <div class="form-group">
+					<label for="exampleInputEmail1">Price</label>
+					<input type="text" class="form-control" name="price" value="">
 				</div>
 				<div class="form-group">
-					<label for="exampleInputEmail1">Image</label>
-					<input type="file" name="avtar" class="form-control" placeholder="image">
+					<label for="exampleInputEmail1">Video</label>
+					<input type="file" name="video" class="form-control">
 				</div>
-				<button type="submit" class="btn btn-primary">Submit</button>
+				<button type="submit" class="btn btn-primary">Save</button>
 			</form>
 		</div>
 	</div>
 @stop
 @section('js_files')  
 <script src="{{ url('/public/js/jquery.validate.js') }}"></script>
-<script src="{{ url('/public/js/module/shop.js') }}"></script>
+<script src="{{ url('/public/js/module/product.js') }}"></script>
 @stop
 

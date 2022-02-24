@@ -12,7 +12,7 @@
                 <input type="hidden" id="shop_id" name="shop_id" value="<?php echo (isset($shop_id) && $shop_id != "" ? $shop_id : '');?>">
 				<div class="form-group">
 					<label for="exampleInputEmail1">Name</label>
-					<input type="name" class="form-control" name="name" placeholder="Full Name" value="<?php echo (isset($shop->name) ? $shop->name : '');?>">
+					<input type="name" class="form-control" name="name" placeholder="Name" value="<?php echo (isset($shop->name) ? $shop->name : '');?>">
 				</div>
 				<div class="form-group">
 					<label for="exampleInputPassword1">Email</label>
@@ -27,7 +27,7 @@
 					<label for="exampleInputEmail1">Image</label>
 					<input type="file" name="avtar" class="form-control" placeholder="image">
 				</div>
-				<button type="submit" class="btn btn-primary">Submit</button>
+				<button type="submit" class="btn btn-primary">Save</button>
 			</form>
 		</div>
 	</div>

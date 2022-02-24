@@ -13,7 +13,7 @@ class AuthController extends Controller
     public function index(Request $request) {
 
         if(Auth::guard('web')->check()) {
-            return redirect('/dashboard');
+            return redirect('/shop');
         } else {
             return view('auth.login');
         }
@@ -41,7 +41,7 @@ class AuthController extends Controller
         
     }
     public function home(Request $request) {
-        echo "asd";
+        return redirect('/');
     }
     public function logout(Request $request) {
         Auth::guard('web')->logout();

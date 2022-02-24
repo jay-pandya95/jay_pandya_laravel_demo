@@ -36,6 +36,16 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/shop/duplicate',[ShopController::class,'duplicate']);
 
 
-    Route::match(['post','get'],'/shop',[ProductController::class,'index']);
+    Route::match(['post','get'],'/product',[ProductController::class,'index']);
+    Route::get('/product/setup',[ProductController::class,'setup']);
+    Route::get('/product/setup/{id}',[ProductController::class,'setup']);
+    Route::get('/product/delete/{id}',[ProductController::class,'delete']);
+    Route::post('/product/commit',[ProductController::class,'commit']);
+    Route::post('/product/duplicate',[ProductController::class,'duplicate']);
+
+    Route::get('/product/csv_export',[ProductController::class,'csv_export']);
+
+    Route::get('/product/upload_csv',[ProductController::class,'upload_csv']);
+    Route::post('/product/csv_upload',[ProductController::class,'csv_upload']);
 
 });

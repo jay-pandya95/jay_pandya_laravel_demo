@@ -13,17 +13,17 @@ $(document).ready(function(){
             email: {  
               required: true,  
               email: true, 
-              // remote: {
-              //   url: url+'/shop/duplicate',
-              //   type: "post",
-              //   data: {
-              //     email: function() {
-              //       return $( ".email" ).val();
-              //     },
-              //      '_token' : token,
-              //      'shop_id' : $('#shop_id').val(),
-              //   }
-              // } 
+              remote: {
+                url: url+'/shop/duplicate',
+                type: "post",
+                data: {
+                  email: function() {
+                    return $( ".email" ).val();
+                  },
+                   _token : token,
+                   shop_id : $('#shop_id').val(),
+                }
+              } 
             },  
           },  
           messages: {  

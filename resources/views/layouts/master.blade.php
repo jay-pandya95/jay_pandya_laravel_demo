@@ -9,7 +9,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{ url('/public/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ url('/public/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ url('/public/css/font-awesome.min.css') }}">
+        <!-- <link rel="stylesheet" href="{{ url('/public/css/font-awesome.min.css') }}"> -->
         <style>
            .error {
                color: red;

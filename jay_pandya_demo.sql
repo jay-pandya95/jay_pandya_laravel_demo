@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2022 at 08:13 PM
+-- Generation Time: Feb 24, 2022 at 08:48 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -103,10 +103,19 @@ CREATE TABLE `products` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `stock` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `video` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `video` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `shop_id`, `name`, `price`, `stock`, `video`, `created_at`, `updated_at`) VALUES
+(1, 1, 'iphone 12', '30000', '5', NULL, '2022-02-24 09:28:43', '2022-02-24 09:28:43'),
+(2, 1, 'iphone 12', '20000', '100', NULL, '2022-02-24 09:32:04', '2022-02-24 09:32:04'),
+(3, 1, 'iphone 13', '200000', '100', 'public/products/video-1645718264.mp4', '2022-02-24 10:27:44', '2022-02-24 10:27:44');
 
 -- --------------------------------------------------------
 
@@ -129,7 +138,7 @@ CREATE TABLE `shops` (
 --
 
 INSERT INTO `shops` (`id`, `name`, `email`, `address`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'abc123', 'abc0@mail.com', 'dummy address', 'head-659652_1280.png', '2022-02-22 11:08:50', '2022-02-23 13:21:46'),
+(1, 'abc123', 'abc0@mail.com', 'dummy address', 'head-659652_1280.png', '2022-02-22 11:08:50', '2022-02-24 08:55:30'),
 (2, 'abc', 'abc1@mail.com', 'dummy address', 'head-659652_1280.png', '2022-02-22 11:08:50', '2022-02-22 11:08:50'),
 (3, 'abc', 'abc2@mail.com', 'dummy address', 'head-659652_1280.png', '2022-02-22 11:08:50', '2022-02-22 11:08:50'),
 (4, 'abc', 'abc3@mail.com', 'dummy address', 'head-659652_1280.png', '2022-02-22 11:08:50', '2022-02-22 11:08:50'),
@@ -333,7 +342,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `shops`

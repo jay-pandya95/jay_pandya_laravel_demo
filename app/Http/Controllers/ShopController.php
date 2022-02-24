@@ -57,8 +57,8 @@ class ShopController extends Controller
                 $filename = 'photo-' . time() . '.' . $file->getClientOriginalExtension();
                 $path = $file->storeAs('public/shops', $filename);
 
-                $s_image['image']   = $filename;
-                Shop::where('id',$id)->update($s_data);
+                $s_image['image']   = $path;
+                Shop::where('id',$id)->update($s_image);
 
             }
             return redirect('/shop');
@@ -78,6 +78,8 @@ class ShopController extends Controller
             if($delete) {
                 return redirect('/shop');
             }
+        } else {
+            return redirect('/shop');
         }
 
     }
@@ -92,9 +94,9 @@ class ShopController extends Controller
         }
 
         if(!empty($data)) {
-           //return true;
+            echo 'false';
         } else {
-            //return false;
+            echo  'true';
         }
     }
 
