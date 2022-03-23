@@ -24,7 +24,7 @@ $(document).ready(function(){
 });
 
 function init_datatable() {
-  if($('.product_table').length > 0) {
+  if($('#product_table').length > 0) {
 
     var min_price = $('.min_price').val();
     var max_price = $('.max_price').val();
@@ -43,17 +43,16 @@ function init_datatable() {
           max_price: max_price,
           stock : stock,
         },
-        order: [[0, 'desc']],
-        columns: [
-            { data: 'product_id', name: 'product_id' },
-            { data: 'name', name: 'name' },
-            { data: 'shop', name: 'shop' },
-            { data: 'price', name: 'price' },
-            { data: 'stock', name: 'stock' },
-            { data: 'manage', name: 'manage' },
-        ],
-      }
-
+      },
+      order: [[0, 'desc']],
+      columns: [
+          { 'data' : 'product_id'},
+          { 'data': 'name'},
+          { 'data': 'shop'},
+          { 'data': 'price'},
+          { 'data': 'stock'},
+          { 'data': 'manage'},
+      ],
     });
   }
 }

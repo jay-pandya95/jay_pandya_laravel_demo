@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Product;
 use App\Models\Shop;
 use Excel;
+use DB;
 
 class ProductController extends Controller
 {
@@ -15,11 +16,10 @@ class ProductController extends Controller
     }
     public function index(Request $request) {
         if($request->method() == "POST") {
-            $min_price = $request->min_price;
-            $max_price = $request->max_price;
+            $min_price = (int)$request->min_price;
+            $max_price = (int)$request->max_price;
             $stock = $request->stock;
             $search = $request->search;
-            $draw = $request->draw;
             $order = $request->order;
             $start = $request->start;
             $length = $request->length;
@@ -35,11 +35,11 @@ class ProductController extends Controller
         $producs->leftJoin('shops', 'shops.id', '=', 'products.shop_id');
 
         if($stock != '') {
-            $producs->where('prize','=',$stock);
+            $producs->where('stock','=',$stock);
         }
         if($min_price != '' && $max_price != '') {
-            $producs->where('prize','>=',$min_price);
-            $producs->where('prize','<=',$max_price);
+            $producs->where('price','>=',$min_price);
+            $producs->where('price','<=',$max_price);
         }
 
         
@@ -62,9 +62,15 @@ class ProductController extends Controller
             });
         }
 
-         $filter_count = $producs->skip($start)->take($length)->count();          
+         $filter_count = $producs->skip($start)->take($length)->count();
+         
+         DB::enableQueryLog();
          $record = $producs->skip($start)->take($length)->get();          
-               
+              
+         $query = DB::getQueryLog();
+        //dd($query);
+        //  print_r($record);
+        //  die;
          $data = array();
 
          foreach ($record as $key => $value) {
@@ -74,19 +80,17 @@ class ProductController extends Controller
              $row['shop'] = $value->shop_name;
              $row['price'] = $value->price;
              $row['stock'] = $value->stock;
-             $row['manage'] = 'fsdf';
+             $row['manage'] = '';
              $data[]  = $row;
          }
           
-         
          $response = array(
-            "draw" => intval($draw),
-            "iTotalRecords" => $total_count,
-            "iTotalDisplayRecords" => $filter_count,
-            "aaData" => $data
+            "recordsTotal" => $total_count,
+            "recordsFiltered" => $filter_count,
+            "data" => $data
          );
 
-        echo json_encode($response);
+         return $response;
 
         } else {
             return view('product.index');

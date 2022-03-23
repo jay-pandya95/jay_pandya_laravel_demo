@@ -30,7 +30,7 @@
 	</div><br>
     <div class="row">
 		<div class="col-md-12">
-            <table  class="table table-striped product_table" id="product_table">
+            <table class="table table-striped product_table" id="product_table">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -38,22 +38,12 @@
                         <th>shop</th>
                         <th>price</th>
                         <th>stock</th>
-                        <th>stock</th>
+                        <th>manage</th>
                     </tr>
                 </thead>
                 <tbody>
-                    
                 </tbody>
-                <tfoot>
-                    <tr>
-                        <th>No</th>
-                        <th>Name</th>
-                        <th>shop</th>
-                        <th>price</th>
-                        <th>stock</th>
-                        <th>stock</th>
-                    </tr>
-                </tfoot>
+                
             </table>
 		</div>
 	</div> 
