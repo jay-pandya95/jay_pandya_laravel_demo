@@ -30,7 +30,6 @@ class AuthController extends Controller
 
             if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])) {
 
-                // demo
                 // Auth::guard('web')->user();
                 return redirect('/dashboard');
             } else{
